@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ProductModel } from '../models/product.model';
-import { PRODUCTS_URL } from '../constants/api.constans';
+import { PRODUCTS_URL } from '../constants/api.constant';
 
 export async function fetchProductsApi(): Promise<ProductModel[]> {
     try {
