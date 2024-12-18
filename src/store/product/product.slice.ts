@@ -14,10 +14,13 @@ export const productSlice = createSlice({
         setProductsAction: (state, action: PayloadAction<ProductModel[]>) => {
             state.products = action.payload;
         },
+        addProductAction: (state, action: PayloadAction<ProductModel>) => {
+            state.products.unshift(action.payload);
+        },
     },
 });
 
-export const { setProductsAction } = productSlice.actions;
+export const { setProductsAction, addProductAction } = productSlice.actions;
 // export default productSlice.reducer;
 
 export type AppState = ReturnType<typeof store.getState>;

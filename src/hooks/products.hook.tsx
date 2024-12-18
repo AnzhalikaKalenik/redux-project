@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProductsApi } from '../services/product-api.service';
+import { fetchProductsApi, createProductApi } from '../services/product-api.service';
 import { AppDispatch, AppState, setProductsAction } from '../store/product/product.slice';
 
 export function useProduct() {
@@ -18,6 +18,10 @@ export function useProduct() {
 
             // setProducts(fetchedProducts);
             dispatch(setProductsAction(fetchedProducts));
+
+            // const createdProducts = await createProductApi(productData);
+            // dispatch(setProductsAction(createdProducts));
+
             setLoading(false);
         } catch (error) {
             setLoading(false);

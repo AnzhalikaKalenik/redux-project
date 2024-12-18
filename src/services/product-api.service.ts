@@ -11,3 +11,13 @@ export async function fetchProductsApi(): Promise<ProductModel[]> {
         throw error;
     }
 }
+
+export async function createProductApi(product: Partial<ProductModel>): Promise<ProductModel> {
+    try {
+        const response = await axios.post<ProductModel>(PRODUCTS_URL, product);
+        return response.data;
+    } catch (error) {
+        console.error('ERROR creating products: ', error);
+        throw error;
+    }
+}

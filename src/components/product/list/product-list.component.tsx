@@ -1,11 +1,12 @@
 import ProductCard from '../card/product-card.component';
 import { ProductModel } from '../../../models/product.model';
+import { SWrapper } from './product-list.styled.component';
 
 type ProductListProp = {
     products: Array<ProductModel>;
 };
 
 const ProductList: React.FC<ProductListProp> = ({ products }) => {
-    return <div>{products && products.map(p => <ProductCard product={p} key={p.id} />)}</div>;
+    return <SWrapper>{products && products.map(p => <ProductCard product={p} key={p.id} />)}</SWrapper>;
 };
 export default ProductList;

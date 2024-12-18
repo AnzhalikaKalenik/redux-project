@@ -9,6 +9,9 @@ type DescriptionProp = {
 const Description: React.FC<DescriptionProp> = ({ text, maxLength = MAX_LENGTH_CONST }) => {
     const [details, setDetails] = useState(false);
 
+    // const btnBgClassName = details ? '' : '';
+    // const btnClasses = ['', btnBgClassName];
+
     const isLong = text.length > maxLength;
     const newtext = isLong ? text.slice(0, maxLength) + '...' : text;
 
@@ -17,7 +20,9 @@ const Description: React.FC<DescriptionProp> = ({ text, maxLength = MAX_LENGTH_C
             {details ? <div>{text}</div> : <div>{newtext}</div>}
 
             {isLong && (
-                <button onClick={() => setDetails(prev => !prev)}>{details ? 'Hide Details' : 'Show Details'}</button>
+                <button style={{ marginTop: '10px', cursor: 'pointer' }} onClick={() => setDetails(prev => !prev)}>
+                    {details ? 'Hide Details' : 'Show Details'}
+                </button>
             )}
         </div>
     );
