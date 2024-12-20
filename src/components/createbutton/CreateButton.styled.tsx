@@ -9,4 +9,11 @@ export const SButton = styled.button`
     right: 40px;
     font-size: 25px;
     cursor: pointer;
+
+    @media (max-width: 768px) {
+        width: 30px;
+        height: 30px;
+        top: 10px;
+        right: 20px;
+    }
 `;

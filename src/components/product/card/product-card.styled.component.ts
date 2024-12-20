@@ -25,16 +25,18 @@ export const STitle = styled.p`
 export const SImg = styled.img`
     max-width: 150px;
     max-height: 150px;
+    /* max-width: 10vw;
+    max-height: 10vh; */
     padding: 5px;
 `;
 export const SPrice = styled.div`
     font-weight: 700;
-    font-size: 14px;
+    font-size: 12px;
     padding: 5px;
 `;
 export const SDescrip = styled.div`
     text-align: start;
     font-size: 14px;
     padding: 5px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 `;

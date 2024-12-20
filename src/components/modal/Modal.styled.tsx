@@ -21,9 +21,8 @@ export const SModalContent = styled.div<{ active: boolean }>`
     padding: 20px;
     border-radius: 12px;
     background-color: white;
-    /* height: 200px;
-    width: 400px; */
     width: 30vw;
+    box-shadow: 1px 1px 5px 1px pink;
 
     transition: transform 0.3s ease; /* Плавный переход */
     transform: scale(${props => (props.active ? 1 : 0.5)});
