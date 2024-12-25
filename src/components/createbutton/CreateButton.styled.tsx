@@ -10,10 +10,15 @@ export const SButton = styled.button`
     font-size: 25px;
     cursor: pointer;
 
+    @media (max-width: 1000px) {
+        width: 40px;
+        height: 40px;
+        right: 30px;
+    }
+
     @media (max-width: 768px) {
         width: 30px;
         height: 30px;
-        top: 10px;
-        right: 20px;
+        right: 10px;
     }
 `;

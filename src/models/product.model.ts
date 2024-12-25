@@ -9,4 +9,5 @@ export type ProductModel = {
         rate: number;
         count: number;
     };
+    createdByUser?: boolean;
 };

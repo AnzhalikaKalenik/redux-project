@@ -9,9 +9,6 @@ type DescriptionProp = {
 const Description: React.FC<DescriptionProp> = ({ text, maxLength = MAX_LENGTH_CONST }) => {
     const [details, setDetails] = useState(false);
 
-    // const btnBgClassName = details ? '' : '';
-    // const btnClasses = ['', btnBgClassName];
-
     const isLong = text.length > maxLength;
     const newtext = isLong ? text.slice(0, maxLength) + '...' : text;
 

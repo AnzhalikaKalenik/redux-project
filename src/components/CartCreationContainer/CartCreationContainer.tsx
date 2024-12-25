@@ -6,16 +6,22 @@ import { FaShoppingCart } from 'react-icons/fa';
 import Cart from '../cart/Cart';
 
 export const SButton = styled.div`
+    width: 50px;
+    height: 50px;
     position: fixed;
     top: 40px;
     right: 50px;
     cursor: pointer;
+    @media (max-width: 1000px) {
+        width: 40px;
+        height: 40px;
+        right: 30px;
+    }
 
     @media (max-width: 768px) {
-        /* width: 40px;
-        height: 40px; */
-        top: 10px;
-        right: 60px;
+        width: 30px;
+        height: 30px;
+        right: 10px;
     }
 `;
 

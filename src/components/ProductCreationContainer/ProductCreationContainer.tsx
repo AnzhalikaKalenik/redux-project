@@ -10,13 +10,13 @@ const Sheader = styled.header`
     display: flex;
     justify-content: space-between;
 `;
+type ProductCreationContainerProp = {
+    // createdByUser: boolean;
+    // createdByUserTrue: () => void;
+};
 
-const ProductCreationContainer: React.FC = () => {
+const ProductCreationContainer: React.FC<ProductCreationContainerProp> = () => {
     const [modalActive, setModalActive] = useState(false);
-
-    // const modalClose = () => {
-    //     setModalActive(modalActive => !modalActive);
-    // };
 
     return (
         <>

@@ -1,4 +1,17 @@
-const Input: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = ({ placeholder, value, onChange }) => {
-    return <input value={value} onChange={onChange} placeholder={placeholder} style={{ width: '100%' }}></input>;
-};
+import React from 'react';
+
+const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(
+    ({ placeholder, value, onChange, ...props }, ref) => {
+        return (
+            <input
+                ref={ref}
+                value={value}
+                onChange={onChange}
+                placeholder={placeholder}
+                {...props}
+                style={{ width: '100%' }}
+            ></input>
+        );
+    }
+);
 export default Input;

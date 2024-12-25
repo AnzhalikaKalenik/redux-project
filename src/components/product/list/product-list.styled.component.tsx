@@ -11,9 +11,13 @@ export const SWrapper = styled.div`
     gap: 20px;
 
     @media (max-width: 1000px) {
+        padding: 50px 100px;
         grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
     @media (max-width: 768px) {
+        padding: 30px 50px;
         grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
     }
 `;

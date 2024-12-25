@@ -7,6 +7,7 @@ export const SWrapper = styled.div`
 `;
 export const SCard = styled.div`
     /* max-width: 400px; */
+    width: 80%;
     min-height: 450px;
     margin: 10px;
     padding: 0 20px;
@@ -16,6 +17,10 @@ export const SCard = styled.div`
     box-shadow: 5px 5px 8px 1px grey;
     :hover {
         box-shadow: 5px 5px 8px 1px pink;
+    }
+
+    @media (max-width: 768px) {
+        width: 70%;
     }
 `;
 export const STitle = styled.p`

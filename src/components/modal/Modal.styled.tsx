@@ -21,9 +21,13 @@ export const SModalContent = styled.div<{ active: boolean }>`
     padding: 20px;
     border-radius: 12px;
     background-color: white;
-    width: 30vw;
+    width: 40vw;
     box-shadow: 1px 1px 5px 1px pink;
 
     transition: transform 0.3s ease; /* Плавный переход */
     transform: scale(${props => (props.active ? 1 : 0.5)});
+
+    @media (max-width: 768px) {
+        width: 70vw;
+    }
 `;

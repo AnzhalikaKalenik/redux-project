@@ -4,6 +4,8 @@ import { SWrapper } from './product-list.styled.component';
 
 type ProductListProp = {
     products: Array<ProductModel>;
+    // createdByUser: boolean;
+    // createdByUserTrue: () => void;
 };
 
 const ProductList: React.FC<ProductListProp> = ({ products }) => {

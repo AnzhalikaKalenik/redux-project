@@ -1,8 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { MAX_LENGTH_TITLE_CONST } from '../../constants/maxlength.title.constant';
 import { addProductCartAction, AppDispatch, AppState, deleteProductCartAction } from '../../store/cart/cart.slice';
 
 import Portal from '../Portal/Portal';
-import { SWrapper, SDiv, SButtongrop, SImg, SPrice } from './Cart.styled.component';
+import { SButtonPortalClose, SContentPortal, SWrapperPortal } from '../Portal/Portal.styled.component';
+import ShotTitle from '../title/ShotTitle';
+import { SWrapper, SButtongrop, SImg, SPrice, STitle } from './Cart.styled.component';
 
 type CartProp = {
     isOpen: boolean;
@@ -18,21 +21,12 @@ const Cart: React.FC<CartProp> = ({ isOpen, onClose }) => {
     const selectCartItemCount = (state: AppState) => state.cartList.count;
     const count = useSelector(selectCartItemCount);
 
+    const countPrice = useSelector((state: AppState) => state.cartList.countPrice);
+
     if (!isOpen) return null;
     return (
         <Portal>
-            <div
-                style={{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
+            <SWrapperPortal
                 onClick={onClose}
                 onKeyDown={e => {
                     if (e.key === 'Escape' || e.key === 'Enter') {
@@ -42,61 +36,37 @@ const Cart: React.FC<CartProp> = ({ isOpen, onClose }) => {
                 tabIndex={0} // Делает элемент фокусируемым
                 role='button' // Добавляет семантику кнопки для screen readers
             >
-                <button
-                    style={{
-                        maxHeight: '90vh',
-                        overflowY: 'auto',
-                        scrollbarWidth: 'none',
-                        fontSize: 20,
-                        border: '1px solid white',
-                        borderRadius: 12,
-                        backgroundColor: ' white',
-                        // width: '50vw',
-                        minWidth: '450px',
-                        position: 'relative',
-                        boxShadow: '2px 2px 8px 1px pink',
-                        paddingBottom: '20px',
-                    }}
+                <SContentPortal
                     onClick={e => e.stopPropagation()}
                     onKeyDown={e => e.stopPropagation()}
                     tabIndex={0} // Делает элемент фокусируемым
                 >
-                    <button
-                        style={{
-                            position: 'absolute',
-                            top: 25,
-                            right: 20,
-                            cursor: 'pointer',
-                            border: '1px solid white',
-                            backgroundColor: 'white',
-                            fontSize: 30,
-                        }}
-                        onClick={onClose}
-                    >
-                        ×
-                    </button>
+                    <SButtonPortalClose onClick={onClose}>×</SButtonPortalClose>
                     <h2>Cart</h2>
                     <div style={{ paddingBottom: 10, fontSize: 16 }}>{count} products in the shopping cart</div>
                     <div style={{ paddingLeft: 20, paddingRight: 20 }}>
                         {cartProducts.map(product => (
-                            <SWrapper>
-                                <SDiv key={product.id}>
-                                    <SImg src={product.image} alt={product.title}></SImg>
-
-                                    {/* <STitle>{product.title}</STitle> */}
-                                    <SPrice>{product.price}</SPrice>
-                                </SDiv>
+                            <SWrapper key={product.id}>
+                                <SImg src={product.image} alt={product.title}></SImg>
+                                <STitle>
+                                    <ShotTitle title={product.title} maxLength={MAX_LENGTH_TITLE_CONST}></ShotTitle>
+                                </STitle>
+                                {/* <SDiv key={product.id}></SDiv> */}
 
                                 <SButtongrop>
                                     {product.countItem}
+
                                     <button onClick={() => dispatch(addProductCartAction(product))}>+</button>
                                     <button onClick={() => dispatch(deleteProductCartAction(product.id!))}>-</button>
                                 </SButtongrop>
+                                {/* <SPrice>{product.price}</SPrice> */}
+                                <SPrice>{product.countPriceItem}</SPrice>
                             </SWrapper>
                         ))}
                     </div>
-                </button>
-            </div>
+                    <div style={{ paddingBottom: 10, fontSize: 14, fontWeight: 'bold' }}>total price {countPrice}</div>
+                </SContentPortal>
+            </SWrapperPortal>
         </Portal>
     );
 };

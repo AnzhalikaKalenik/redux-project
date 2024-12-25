@@ -17,10 +17,13 @@ export const productSlice = createSlice({
         addProductAction: (state, action: PayloadAction<ProductModel>) => {
             state.products.unshift(action.payload);
         },
+        deleteProductAction: (state, action: PayloadAction<number>) => {
+            state.products = state.products.filter(p => p.id !== action.payload);
+        },
     },
 });
 
-export const { setProductsAction, addProductAction } = productSlice.actions;
+export const { setProductsAction, addProductAction, deleteProductAction } = productSlice.actions;
 // export default productSlice.reducer;
 
 export type AppState = ReturnType<typeof store.getState>;
